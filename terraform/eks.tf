@@ -9,8 +9,6 @@ module "eks" {
   vpc_id     = aws_vpc.sre_vpc.id
   subnet_ids = [aws_subnet.public.id]
 
-  cluster_iam_role_name = aws_iam_role.eks_cluster_role.name
-
   eks_managed_node_groups = {
 
     default = {
