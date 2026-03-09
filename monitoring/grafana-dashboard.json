@@ -1,0 +1,58 @@
+{
+  "title": "Kubernetes Cluster Overview",
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+
+  "panels": [
+
+    {
+      "type": "stat",
+      "title": "CPU Usage",
+
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total[5m]))",
+          "legendFormat": "CPU"
+        }
+      ]
+    },
+
+    {
+      "type": "stat",
+      "title": "Memory Usage",
+
+      "targets": [
+        {
+          "expr": "sum(container_memory_usage_bytes)",
+          "legendFormat": "Memory"
+        }
+      ]
+    },
+
+    {
+      "type": "graph",
+      "title": "Pod Restarts",
+
+      "targets": [
+        {
+          "expr": "increase(kube_pod_container_status_restarts_total[10m])",
+          "legendFormat": "Restarts"
+        }
+      ]
+    },
+
+    {
+      "type": "graph",
+      "title": "API Server Requests",
+
+      "targets": [
+        {
+          "expr": "rate(apiserver_request_total[5m])",
+          "legendFormat": "Requests"
+        }
+      ]
+    }
+
+  ]
+}
